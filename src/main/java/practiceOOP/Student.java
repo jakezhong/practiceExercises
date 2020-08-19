@@ -13,8 +13,8 @@ public class Student implements Comparable<Student> { // compares students based
      */
     public Student(String name, int id) {
         // TODO: initialize instance variables name and id
-
-
+        this.name = name;
+        this.id = id;
     }
 
     /*
@@ -24,7 +24,7 @@ public class Student implements Comparable<Student> { // compares students based
     public String getName() {
         // TODO: return name
 
-        return null; // change
+        return name; // change
     }
 
     /**
@@ -34,7 +34,7 @@ public class Student implements Comparable<Student> { // compares students based
     public int getId() {
         // TODO: return id
 
-        return -1; // change
+        return id; // change
     }
 
     /**
@@ -45,7 +45,7 @@ public class Student implements Comparable<Student> { // compares students based
         // TODO: return a string that contains the name and the id,
         // separated by comma
 
-        return null; // remember to change this
+        return name + "," + id; // remember to change this
     }
 
     /**
@@ -61,8 +61,19 @@ public class Student implements Comparable<Student> { // compares students based
     public int compareTo(Student otherStudent) {
         // TODO:  compare students by name
         // HINT: use String's compareTo method to do the comparison in one line
-
+        for (int i = 0; i < name.length(); i++) {
+            if (name.charAt(i) < otherStudent.name.charAt(i)) {
+                return -1;
+            } else if (name.charAt(i) > otherStudent.name.charAt(i)) {
+                return 1;
+            }
+        }
         // TODO: if names are same, compare by id
+        if (id < otherStudent.id) {
+            return -1;
+        } else if (id > otherStudent.id) {
+            return 1;
+        }
 
         return 0; // remember to change this
     }

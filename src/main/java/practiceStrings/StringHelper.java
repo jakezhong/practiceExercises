@@ -1,5 +1,8 @@
 package practiceStrings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /** StringHelper class contains several static methods for manipulating strings. */
 public class StringHelper {
 
@@ -11,8 +14,18 @@ public class StringHelper {
      */
     public static int countVowels(String message) {
         //TODO: Replace with your code.
+        int count = 0;
 
-        return -1; // remember to change
+        for (int i = 0; i < message.length(); i++) {
+            if (message.charAt(i) == 'a'
+                    || message.charAt(i) == 'e'
+                    || message.charAt(i) == 'i'
+                    || message.charAt(i) == 'o'
+                    || message.charAt(i) == 'u') {
+                count++;
+            }
+        }
+        return count; // remember to change
     }
 
     /**
@@ -32,8 +45,29 @@ public class StringHelper {
      */
     public static String encrypt(String message, int shift) {
         //TODO: Replace with your code.
+        if (shift > 26) return null;
 
-        return ""; // remember to change
+        StringBuilder str = new StringBuilder();
+
+        for (int i = 0; i < message.length(); i++) {
+            if ('A' <= message.charAt(i) && message.charAt(i) <= 'Z') {
+                System.out.println("what A");
+                if (message.charAt(i) + shift > (int) 'Z') {
+                    str.append((char) ((int) 'A' + message.charAt(i) + shift - (int) 'Z' - 1));
+                } else {
+                    str.append((char) (message.charAt(i) + shift));
+                }
+            } else if ('a' <= message.charAt(i) && message.charAt(i) <= 'z') {
+                if (message.charAt(i) + shift > (int) 'z') {
+                    str.append((char) ((int) 'a' + message.charAt(i) + shift - (int) 'z' - 1));
+                } else {
+                    str.append((char) (message.charAt(i) + shift));
+                }
+            } else {
+                return null;
+            }
+        }
+        return str.toString(); // remember to change
     }
 
     /** Main method: runs methods of class StringHelper

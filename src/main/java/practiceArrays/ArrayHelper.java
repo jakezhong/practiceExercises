@@ -1,5 +1,7 @@
 package practiceArrays;
 
+import java.util.HashMap;
+
 /** ArrayHelper class contains several static methods for manipulating an array of
  * integers.
  */
@@ -11,7 +13,18 @@ public class ArrayHelper {
      */
     public static void print(int[] arr) {
         //TODO: Replace with your code.
+        int count = 0;
+        StringBuilder output = new StringBuilder();
+        for (int value : arr) {
+            if (count != 0) {
+                output.append(", ");
+            } else {
+                count++;
+            }
+            output.append(value);
+        }
 
+        System.out.println(output.toString());
     }
 
 
@@ -23,7 +36,9 @@ public class ArrayHelper {
     public static int sum(int[] arr) {
         int s = 0;
         //TODO: Replace with your code.
-
+        for (int value : arr) {
+            s += value;
+        }
         return s;
     }
 
@@ -37,7 +52,9 @@ public class ArrayHelper {
      */
     public static boolean threshold(int[] arr, int thres) {
         //TODO: Replace with your code.
-
+        for (int value : arr) {
+            if (value >= thres) return false;
+        }
         return true;
     }
 
@@ -51,7 +68,9 @@ public class ArrayHelper {
      */
     public static boolean find(int[] arr, int elem) {
         //TODO: Replace with your code.
-
+        for (int value : arr) {
+            if (value == elem) return true;
+        }
 
         return false;
     }
@@ -64,8 +83,12 @@ public class ArrayHelper {
      */
     public static int countOccurrences(int[] arr, int elem) {
         //TODO: Replace with your code.
+        int occur = 0;
 
-        return -1; // remember to change
+        for (int value : arr) {
+            if (value == elem) occur++;
+        }
+        return occur; // remember to change
     }
 
     /** Returns true if array of integers has duplicate elements,
@@ -79,7 +102,15 @@ public class ArrayHelper {
      */
     public static boolean hasDuplicates(int[] arr) {
         //TODO: Replace with your code.
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 
+        for (int value : arr) {
+            if (map.containsKey(value)) {
+                return true;
+            } else {
+                map.put(value, 1);
+            }
+        }
         return false;
     }
 
